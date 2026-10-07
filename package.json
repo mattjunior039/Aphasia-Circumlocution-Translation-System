@@ -1,8 +1,10 @@
 {
   "name": "wordbridge",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "type": "module",
+  "main": "electron/main.js",
+  "description": "Private on-device word-finding companion",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
@@ -13,13 +15,41 @@
     "test:browser": "playwright test",
     "test:offline": "playwright test -c playwright.production.config.js",
     "benchmark": "node scripts/benchmark.mjs",
-    "benchmark:semantic": "node scripts/benchmark.mjs --semantic"
+    "benchmark:semantic": "node scripts/benchmark.mjs --semantic",
+    "app:dev": "npm run app:renderer && electron .",
+    "app:renderer": "vite build --mode desktop",
+    "app:build": "npm run app:renderer && electron-builder --mac --arm64",
+    "test:desktop": "playwright test -c playwright.desktop.config.js"
   },
-  "dependencies": {
-    "@huggingface/transformers": "4.3.1"
+  "build": {
+    "appId": "com.mattjunior039.wordbridge",
+    "productName": "Wordbridge",
+    "directories": {
+      "output": "releases"
+    },
+    "asar": true,
+    "mac": {
+      "target": "dmg",
+      "identity": null
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "files": [
+      "build/renderer/**/*",
+      "electron/**/*",
+      "package.json",
+      "!build/renderer/models/Xenova/bge-small-en-v1.5/**/*",
+      "!build/renderer/data/bge-*",
+      "!build/renderer/assets/ort-wasm-*.wasm",
+      "!build/renderer/sw.js"
+    ]
   },
   "devDependencies": {
+    "@huggingface/transformers": "4.3.1",
     "@playwright/test": "1.63.0",
+    "electron": "^44.6.0",
+    "electron-builder": "^26.15.3",
     "vite": "8.3.3",
     "wordnet-db": "3.1.14"
   }

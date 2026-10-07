@@ -25,6 +25,15 @@
 			"group": "build"
 		},
 		{
+			"label": "Wordbridge desktop build",
+			"type": "shell",
+			"command": "npm",
+			"args": ["run", "app:build"],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
 			"label": "Wordbridge preview",
 			"type": "shell",
 			"command": "npm",

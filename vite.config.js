@@ -1,12 +1,14 @@
 import { defineConfig } from "vite";
 import { readFile } from "node:fs/promises";
-
-const base = process.env.GITHUB_ACTIONS ? "/Aphasia-Circumlocution-Translation-System/" : "/";
-
-export default defineConfig({
+export default defineConfig(({ mode }) => {
+  const isElectron = mode === "desktop";
+  const base = isElectron ? "/" : (process.env.GITHUB_ACTIONS ? "/Aphasia-Circumlocution-Translation-System/" : "/");
+  return {
   base,
+  build: { outDir: isElectron ? "build/renderer" : "build/web" },
   worker: { format: "es" },
-  plugins: [{
+  plugins: [
+    {
     name: "self-hosted-onnx-runtime",
     configureServer(server) {
       server.middlewares.use(async (request, response, next) => {
@@ -24,7 +26,10 @@ export default defineConfig({
   }, {
     name: "wordbridge-offline-shell",
     generateBundle(_options, bundle) {
-      const shell = [base, `${base}index.html`, ...Object.keys(bundle).filter((name) => /\.(?:js|css)$/.test(name)).map((name) => `${base}${name}`)];
+      if (isElectron) return;
+      const shellPaths = [base, `${base}index.html`, ...Object.keys(bundle).filter((name) => /\.(?:js|css)$/.test(name)).map((name) => `${base}${name}`)];
+      const shell = shellPaths;
+
       const version = JSON.stringify(`wordbridge-${Object.keys(bundle).join("-")}`);
       this.emitFile({
         type: "asset", fileName: "sw.js",
@@ -56,4 +61,5 @@ self.addEventListener("fetch", event => {
       });
     }
   }]
+  };
 });

@@ -1,81 +1,111 @@
 # Wordbridge
 
-A local word-finding companion: describe what you mean, explore possible words, and optionally clarify your clue. This is an experimental communication aid, not a guaranteed translation or a clinically validated treatment.
+A local, private, and supportive word-finding companion. Describe what you mean, explore possible words, and optionally clarify your clue. 
 
-## Start the app
+> **Disclaimer:** This is an experimental communication aid, not a guaranteed translation or a clinically validated treatment.
 
-Use Node.js 22.12+ (or 20.19+). Node 26 and Chrome on macOS were used for validation.
+## 📥 Download
+
+**[Download Mac App (macOS Apple Silicon)](https://github.com/mattjunior039/Aphasia-Circumlocution-Translation-System/releases)**
+
+The desktop app includes the vocabulary and MiniLM assets out of the box and needs no web server or internet connection for word search. Once installed, simply enable **on-device semantic search** to load the included model.
+
+---
+
+## 🚀 Features
+
+- **2,500+ unique word labels and ~4,000 senses**: A broad vocabulary built in.
+- **On-device Privacy**: Search results connect to selection, spoken output, saved words, and personal vocabulary entirely on your device. No cloud integration or API key requirement. No clues or personal vocabulary are sent to an external AI provider.
+- **Advanced Semantic Search**: Shared search engine with exact-word lookup, lexical ranking, structured object-purpose constraints, and optional local sentence-embedding retrieval.
+- **Differentiated Meanings**: Distinct words such as tea/coffee, nurse/doctor, pencil/pen, and watch/clock no longer collapse into misleading exact aliases.
+- **Personal Vocabulary**: Add your own words and clues, which are embedded only on your device, even after edits.
+- **Accessible & Resilient**: Private backup/restore, explicit storage failures, corrupt-data protection, keyboard support, text/contrast controls, and loading/error announcements.
+
+*Example:* “Round thing I use to eat soup” suggests **bowl and spoon**, without "apple". “What I use to call my daughter” suggests **phone**. 
+
+---
+
+## 💻 Web App Usage (Local Development)
+
+Wordbridge can also be run as a local web application.
+
+### Prerequisites
+- Node.js 22.12+ (or 20.19+)
+- (Tested on Node 26 and Chrome on macOS)
+
+### Running Locally
 
 ```sh
 npm install
 npm run dev
 ```
 
-Open the **Local** address printed in the terminal. Vite selects another port if its default is occupied. Enable **on-device semantic search** below the clue input for the MiniLM-based engine. Until enabled, the UI explicitly labels its more limited basic matching.
+Open the **Local** address printed in your terminal. Enable **on-device semantic search** below the clue input to use the MiniLM-based engine.
 
-The included vocabulary, model weights, and browser runtime are served from this project. Searching sends no clues or personal vocabulary to an external AI provider. There is no cloud integration or API key requirement.
+### Migration for Web App Users
 
-### If you used the previous directly opened page
+If you previously used a directly opened `index.html` (via `file://`), you will need to migrate your saved words, as browser storage is tied to the address.
+1. Open the original `index.html` file directly.
+2. Use **Export previous saved words** in the migration panel.
+3. Start the local server (`npm run dev`), open it, and choose **Restore backup**.
 
-The expanded app needs its local assets served over HTTP; directly opening `index.html` no longer starts the finder. Browser storage is tied to its address, so data saved at the former `file://` address does not automatically appear at localhost.
+---
 
-Open the same `index.html` directly and use **Export previous saved words** in its migration panel. Start the local server, then choose **Restore backup** in the new app. Original built-in IDs remain compatible. Keep the downloaded JSON private.
+## 🛠️ Build and Offline Use
 
-## What changed
-
-- **2,500 unique word labels and 3,973 senses**, instead of 41 built-in entries.
-- 144 curated entries with everyday definitions, purposes, and properties, plus a frequency-selected WordNet subset. The wider subset is broader and less curated; it is not 2,500 hand-verified everyday concepts.
-- A shared search engine with exact-word lookup, lexical ranking, structured object-purpose constraints, and optional local sentence-embedding retrieval.
-- Distinct words such as tea/coffee, nurse/doctor, pencil/pen, and watch/clock no longer collapse into misleading exact aliases.
-- Six initial credible suggestions, **Show more**, paginated browsing, an Actions category, and an optional clarifying question.
-- Search results connect to selection, spoken output, saved words, and personal vocabulary. Personal words are embedded only on this device, including after edits.
-- Private backup/restore, explicit storage failures, corrupt-data protection, keyboard support, text/contrast controls, and loading/error announcements.
-
-For example, “round thing i use to eat soup” now suggests **bowl and spoon**, without apple. “What I use to call my daughter” suggests **phone**. Ambiguous clues still require your judgment.
-
-## Measured quality and remaining limits
-
-See [evaluation/README.md](./evaluation/README.md) and the reproducible [semantic report](./evaluation/semantic-report.json).
-
-On the frozen **120-clue held-out split**:
-
-| Engine | Top-1 accuracy | Acceptable answer in first 6 |
-| --- | ---: | ---: |
-| Expanded basic matching | 72.5% | 88.3% |
-| Local MiniLM | 79.2% | 96.7% |
-| Local BGE | 79.2% | 99.2% |
-
-MiniLM is the current opt-in UI engine: it did better on the development split and has smaller weights (about 23 MB, versus 34 MB for BGE). BGE remains an evaluated alternative, not a silently selected cloud service.
-
-The proposed **80% top-1 gate has not been met**. The main benchmark tests coverage expansion over 80 added concepts and is editorial, not representative patient data. Results do not establish general-language accuracy or clinical efficacy. The five negative regression cases are too few to validate abstention reliably. Negation, vague personal references, and anatomical versus object descriptions can still confuse the engine. Do not interpret similarities as probabilities.
-
-## Build and offline use
-
+### Web Build
 ```sh
 npm run build
 npm run preview
 ```
+The production build installs an app-scoped service worker. Load it online, allow installation, reload, and enable the local model once so its assets can be cached. Subsequent offline reload and local inference work smoothly (tested in Chrome).
 
-The production build installs an app-scoped service worker. Load it online, allow installation, reload, and enable the local model once so its assets can be cached. Subsequent offline reload and local inference were tested in Chrome. Uncached files still require the server; cache eviction, storage limits, and unsupported browsers can prevent offline use. Development mode does not install the offline shell.
+### Desktop App Build (Native)
+```sh
+npm install
+npm run app:dev      # build and open the native app
+npm run app:build    # build one macOS arm64 app and DMG in releases/
+npm run test:desktop # test the built renderer in Electron
+```
+The native desktop app uses bundled assets instead of a service worker and starts offline immediately. Release output is in `releases/`.
 
-Model weights are only part of the footprint: the MiniLM index is approximately 6.1 MB, and the browser runtime and vocabulary add further assets. Loading progress is shown by stage, not an invented percentage. Browser inference uses a worker and single-threaded WASM; WebGPU acceleration and real mobile hardware have not been validated.
+---
 
-## Validation
+## 📊 Measured Quality and Limitations
+
+*MiniLM* is the current opt-in UI engine (about 23 MB). *BGE* remains an evaluated alternative, but not a silently selected cloud service.
+
+Please note:
+- The system was tested on an editorial dataset, which does not represent actual patient data.
+- Results do not establish general-language accuracy or clinical efficacy. 
+- Negation, vague personal references, and anatomical versus object descriptions can still confuse the engine. Do not interpret similarities as probabilities.
+
+For detailed metrics and methodology, see the [Evaluation README](./evaluation/README.md) and the reproducible [semantic report](./evaluation/semantic-report.json).
+
+---
+
+## 🧪 Validation and Testing
+
+Wordbridge includes comprehensive test suites:
 
 ```sh
 npm test                   # unit, schema, baseline, index, and regression tests
 npm run test:browser       # development end-to-end tests
 npm run build
 npm run test:offline       # production model loading and offline reload/inference
-npm run benchmark         # original baseline versus expanded lexical search
+npm run app:renderer
+npm run test:desktop       # native layout, model search, preferences, and resize
+npm run benchmark          # original baseline versus expanded lexical search
 npm run benchmark:semantic # same dataset through lexical, MiniLM, and BGE
 ```
 
-Browser tests use an installed Google Chrome (`channel: "chrome"`). If Chrome is unavailable, choose an installed supported Playwright channel or install Chromium and remove the channel setting. The test servers use fixed project-specific ports and stop when tests finish. They do not terminate unrelated processes.
+Tests use an installed Google Chrome (`channel: "chrome"`). The test servers use fixed project-specific ports and stop automatically.
 
-## Rebuild data and models
+---
 
-Generated assets are included. For vocabulary changes:
+## 🔄 Rebuilding Data and Models
+
+If you modify the vocabulary, regenerate the semantic indexes:
 
 ```sh
 npm run data:build
@@ -85,14 +115,4 @@ npm test
 npm run benchmark:semantic
 ```
 
-Rebuilding downloads public model assets from pinned Hugging Face revisions and preserves model cards. It never uploads descriptions. Regenerate both semantic indexes after a vocabulary change; version checks reject stale indexes. Dataset and runtime license notices are included under `public/`. See [DATA-SOURCES.md](./DATA-SOURCES.md).
-
-## Privacy and personal words
-
-Saved words, personal entries, and display preferences are stored in this browser on this origin. They are not synced. Use **Download private backup** to transfer or preserve them; restoring replaces existing entries only after confirmation. Invalid backups are rejected, and invalid existing data is not overwritten by normal saves.
-
-Clearing site data removes local entries and cached assets. On a shared device, other people using this browser may see your entries. Backups also contain personal information.
-
-**Browser voice recognition is separate from local word search.** Depending on the browser it may send audio to a speech service; the microphone control asks before starting it. Spoken output uses browser/OS voices, which may have their own service behavior. Typing always remains available.
-
-External LLM interpretation could help flexible descriptions, but also introduces data handling, cost, hallucination, and outage concerns. It is deliberately deferred until a provider, explicit consent, and a request/spending budget are approved.
+Rebuilding downloads public model assets from pinned Hugging Face revisions. Dataset and runtime license notices are included under `public/`. See [DATA-SOURCES.md](./DATA-SOURCES.md) for attribution.

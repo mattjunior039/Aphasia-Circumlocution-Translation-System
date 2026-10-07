@@ -7,3 +7,7 @@ dist/
 evaluation/local-*.json
 playwright-report/
 test-results/
+build/
+releases/
+dist-electron/
+.DS_Store

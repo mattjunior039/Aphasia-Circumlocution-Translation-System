@@ -1,6 +1,7 @@
 import { createIndex, rank, normalize, validateVocabulary, filterCandidates } from "./search/engine.js";
 import { SemanticClient } from "./search/semantic-client.js";
 import { validateBackup } from "./search/backup.js";
+import { assetUrl } from "./search/assets.js";
 
 const STORAGE_KEYS = {
   custom: "wordbridge.customWords.v1",
@@ -498,7 +499,7 @@ for (const [id, key] of [["#text-size-toggle", "largeText"], ["#contrast-toggle"
 updatePreferences();
 elements.storageStatus.textContent = [...new Set(storageWarnings)].join(" ");
 try {
-  const response = await fetch(import.meta.env.BASE_URL + "data/vocabulary.json");
+  const response = await fetch(assetUrl("data/vocabulary.json"));
   if (!response.ok) throw new Error(`Vocabulary request failed (${response.status}).`);
   const data = await response.json();
   validateVocabulary(data.words);
@@ -513,7 +514,7 @@ try {
   elements.engineButton.disabled = true;
   announce(elements.status.textContent);
 }
-if (import.meta.env.PROD && "serviceWorker" in navigator) {
+if (import.meta.env.PROD && ["http:", "https:"].includes(location.protocol) && "serviceWorker" in navigator) {
   navigator.serviceWorker.addEventListener("message", (event) => {
     if (event.data?.type === "offline-cache-error") {
       elements.storageStatus.textContent = "Offline asset caching failed. Keep the local server available and check browser storage before using the app offline.";
