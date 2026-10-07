@@ -1,7 +1,10 @@
 import { defineConfig } from "vite";
 import { readFile } from "node:fs/promises";
 
+const base = process.env.GITHUB_ACTIONS ? "/Aphasia-Circumlocution-Translation-System/" : "/";
+
 export default defineConfig({
+  base,
   worker: { format: "es" },
   plugins: [{
     name: "self-hosted-onnx-runtime",
@@ -21,7 +24,7 @@ export default defineConfig({
   }, {
     name: "wordbridge-offline-shell",
     generateBundle(_options, bundle) {
-      const shell = ["/", "/index.html", ...Object.keys(bundle).filter((name) => /\.(?:js|css)$/.test(name)).map((name) => `/${name}`)];
+      const shell = [base, `${base}index.html`, ...Object.keys(bundle).filter((name) => /\.(?:js|css)$/.test(name)).map((name) => `${base}${name}`)];
       const version = JSON.stringify(`wordbridge-${Object.keys(bundle).join("-")}`);
       this.emitFile({
         type: "asset", fileName: "sw.js",
