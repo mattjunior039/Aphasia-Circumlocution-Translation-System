@@ -11,15 +11,15 @@ const personalCache = new Map();
 
 async function initialize(model) {
   const [vocabularyResponse, manifestResponse] = await Promise.all([
-    fetch("/data/vocabulary.json"),
-    fetch(`/data/${model}-manifest.json`)
+    fetch(import.meta.env.BASE_URL + "data/vocabulary.json"),
+    fetch(import.meta.env.BASE_URL + `data/${model}-manifest.json`)
   ]);
   if (!vocabularyResponse.ok || !manifestResponse.ok) throw new Error("Local model assets are missing. Run the documented model build command.");
   vocabulary = await vocabularyResponse.json();
   manifest = await manifestResponse.json();
   if (manifest.vocabularySha256 !== vocabulary.sha256) throw new Error("The local model index is outdated. Rebuild it before using semantic search.");
   self.postMessage({ type: "progress", message: "Loading the local word index…" });
-  const response = await fetch(`/data/${manifest.indexFile}`);
+  const response = await fetch(import.meta.env.BASE_URL + `data/${manifest.indexFile}`);
   if (!response.ok) throw new Error("The local word index could not be loaded.");
   vectors = new Float32Array(await response.arrayBuffer());
   if (vectors.length !== manifest.senseIds.length * manifest.dimensions) throw new Error("The local word index is incomplete.");
@@ -27,8 +27,8 @@ async function initialize(model) {
   env.allowLocalModels = true;
   // The app service worker caches the original responses, including compressed assets.
   env.useBrowserCache = false;
-  env.localModelPath = "/models/";
-  env.backends.onnx.wasm.wasmPaths = "/runtime/";
+  env.localModelPath = import.meta.env.BASE_URL + "models/";
+  env.backends.onnx.wasm.wasmPaths = import.meta.env.BASE_URL + "runtime/";
   env.backends.onnx.wasm.numThreads = 1;
   self.postMessage({ type: "progress", message: "Loading model weights and preparing on-device inference…" });
   extractor = await pipeline("feature-extraction", manifest.model, { dtype: manifest.dtype });

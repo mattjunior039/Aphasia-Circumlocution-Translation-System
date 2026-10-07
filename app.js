@@ -498,7 +498,7 @@ for (const [id, key] of [["#text-size-toggle", "largeText"], ["#contrast-toggle"
 updatePreferences();
 elements.storageStatus.textContent = [...new Set(storageWarnings)].join(" ");
 try {
-  const response = await fetch("/data/vocabulary.json");
+  const response = await fetch(import.meta.env.BASE_URL + "data/vocabulary.json");
   if (!response.ok) throw new Error(`Vocabulary request failed (${response.status}).`);
   const data = await response.json();
   validateVocabulary(data.words);
@@ -519,7 +519,7 @@ if (import.meta.env.PROD && "serviceWorker" in navigator) {
       elements.storageStatus.textContent = "Offline asset caching failed. Keep the local server available and check browser storage before using the app offline.";
     }
   });
-  navigator.serviceWorker.register("/sw.js").catch((error) => {
+  navigator.serviceWorker.register(import.meta.env.BASE_URL + "sw.js").catch((error) => {
     elements.storageStatus.textContent = `Offline caching is unavailable: ${error.message}. The app requires the local server to remain running.`;
   });
 }
