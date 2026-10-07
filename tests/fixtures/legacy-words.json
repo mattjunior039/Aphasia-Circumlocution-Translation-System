@@ -1,0 +1,724 @@
+[
+  {
+    "id": "phone",
+    "label": "Phone",
+    "category": "Everyday",
+    "description": "A small device for calling or messaging people.",
+    "aliases": [
+      "mobile",
+      "cell phone",
+      "telephone"
+    ],
+    "clues": [
+      "call someone",
+      "talk to someone far away",
+      "fits in my pocket",
+      "message",
+      "ringing",
+      "screen",
+      "dial"
+    ]
+  },
+  {
+    "id": "keys",
+    "label": "Keys",
+    "category": "Everyday",
+    "description": "Small metal things that open a lock or start a car.",
+    "aliases": [
+      "key",
+      "house keys",
+      "car keys"
+    ],
+    "clues": [
+      "open the door",
+      "unlock",
+      "metal",
+      "lock",
+      "start the car",
+      "keyring"
+    ]
+  },
+  {
+    "id": "wallet",
+    "label": "Wallet",
+    "category": "Everyday",
+    "description": "A small case for carrying money and cards.",
+    "aliases": [
+      "purse",
+      "billfold"
+    ],
+    "clues": [
+      "money",
+      "credit cards",
+      "carry in my pocket",
+      "cash",
+      "pay"
+    ]
+  },
+  {
+    "id": "glasses",
+    "label": "Glasses",
+    "category": "Everyday",
+    "description": "Something you wear to help you see clearly.",
+    "aliases": [
+      "spectacles",
+      "eyeglasses"
+    ],
+    "clues": [
+      "wear on my face",
+      "help me see",
+      "eyes",
+      "read",
+      "frames",
+      "lenses"
+    ]
+  },
+  {
+    "id": "water",
+    "label": "Water",
+    "category": "Everyday",
+    "description": "A clear drink that helps when you are thirsty.",
+    "aliases": [
+      "drink",
+      "tap water"
+    ],
+    "clues": [
+      "thirsty",
+      "clear",
+      "tap",
+      "drink",
+      "cold",
+      "bottle",
+      "liquid"
+    ]
+  },
+  {
+    "id": "coffee",
+    "label": "Coffee",
+    "category": "Everyday",
+    "description": "A warm, dark drink many people have in the morning.",
+    "aliases": [
+      "tea",
+      "hot drink"
+    ],
+    "clues": [
+      "morning",
+      "mug",
+      "caffeine",
+      "warm",
+      "cafe",
+      "drink"
+    ]
+  },
+  {
+    "id": "bread",
+    "label": "Bread",
+    "category": "Everyday",
+    "description": "A baked food, often sliced, used for sandwiches or toast.",
+    "aliases": [
+      "toast",
+      "sandwich"
+    ],
+    "clues": [
+      "food",
+      "baked",
+      "slices",
+      "sandwich",
+      "toast",
+      "loaf",
+      "eat"
+    ]
+  },
+  {
+    "id": "apple",
+    "label": "Apple",
+    "category": "Everyday",
+    "description": "A crisp, round fruit that can be red or green.",
+    "aliases": [
+      "fruit"
+    ],
+    "clues": [
+      "red",
+      "green",
+      "round",
+      "crunchy",
+      "fruit",
+      "eat",
+      "tree"
+    ]
+  },
+  {
+    "id": "medicine",
+    "label": "Medicine",
+    "category": "Everyday",
+    "description": "Something you take or use to help with an illness.",
+    "aliases": [
+      "pills",
+      "medication",
+      "tablet"
+    ],
+    "clues": [
+      "sick",
+      "doctor",
+      "pill",
+      "feel better",
+      "take every day",
+      "bottle"
+    ]
+  },
+  {
+    "id": "book",
+    "label": "Book",
+    "category": "Everyday",
+    "description": "Pages with words or pictures that you can read.",
+    "aliases": [
+      "novel"
+    ],
+    "clues": [
+      "read",
+      "pages",
+      "story",
+      "library",
+      "paper",
+      "pictures"
+    ]
+  },
+  {
+    "id": "pen",
+    "label": "Pen",
+    "category": "Everyday",
+    "description": "A tool for writing with ink.",
+    "aliases": [
+      "pencil"
+    ],
+    "clues": [
+      "write",
+      "paper",
+      "ink",
+      "draw",
+      "school",
+      "note"
+    ]
+  },
+  {
+    "id": "television",
+    "label": "Television",
+    "category": "Everyday",
+    "description": "A screen for watching shows, films, and the news.",
+    "aliases": [
+      "tv",
+      "television set"
+    ],
+    "clues": [
+      "watch",
+      "screen",
+      "shows",
+      "movies",
+      "news",
+      "living room"
+    ]
+  },
+  {
+    "id": "remote",
+    "label": "Remote control",
+    "category": "Everyday",
+    "description": "A handheld device for changing the television from across the room.",
+    "aliases": [
+      "remote",
+      "tv remote"
+    ],
+    "clues": [
+      "change the channel",
+      "buttons",
+      "television",
+      "from the sofa",
+      "volume"
+    ]
+  },
+  {
+    "id": "clock",
+    "label": "Clock",
+    "category": "Everyday",
+    "description": "A device with numbers that tells you the time.",
+    "aliases": [
+      "watch",
+      "time"
+    ],
+    "clues": [
+      "numbers",
+      "time",
+      "hour",
+      "wrist",
+      "alarm",
+      "tick"
+    ]
+  },
+  {
+    "id": "calendar",
+    "label": "Calendar",
+    "category": "Everyday",
+    "description": "A chart or book showing days, weeks, and months.",
+    "aliases": [
+      "diary",
+      "planner"
+    ],
+    "clues": [
+      "date",
+      "month",
+      "appointment",
+      "schedule",
+      "days",
+      "remember"
+    ]
+  },
+  {
+    "id": "chair",
+    "label": "Chair",
+    "category": "Everyday",
+    "description": "A piece of furniture you sit on.",
+    "aliases": [
+      "seat",
+      "stool"
+    ],
+    "clues": [
+      "sit",
+      "furniture",
+      "legs",
+      "table",
+      "rest"
+    ]
+  },
+  {
+    "id": "bed",
+    "label": "Bed",
+    "category": "Everyday",
+    "description": "A piece of furniture where you lie down to sleep.",
+    "aliases": [
+      "mattress"
+    ],
+    "clues": [
+      "sleep",
+      "bedroom",
+      "lie down",
+      "tired",
+      "pillow",
+      "night"
+    ]
+  },
+  {
+    "id": "door",
+    "label": "Door",
+    "category": "Everyday",
+    "description": "A panel you open to enter or leave a room or building.",
+    "aliases": [
+      "entrance"
+    ],
+    "clues": [
+      "open",
+      "close",
+      "room",
+      "enter",
+      "leave",
+      "handle",
+      "knock"
+    ]
+  },
+  {
+    "id": "car",
+    "label": "Car",
+    "category": "Everyday",
+    "description": "A road vehicle with an engine that people drive.",
+    "aliases": [
+      "automobile",
+      "vehicle"
+    ],
+    "clues": [
+      "drive",
+      "road",
+      "engine",
+      "travel",
+      "wheels",
+      "transport"
+    ]
+  },
+  {
+    "id": "clothing",
+    "label": "Jacket",
+    "category": "Everyday",
+    "description": "A warm piece of clothing you wear over your shirt.",
+    "aliases": [
+      "coat"
+    ],
+    "clues": [
+      "wear",
+      "cold",
+      "warm",
+      "outside",
+      "sleeves",
+      "clothes"
+    ]
+  },
+  {
+    "id": "daughter",
+    "label": "Daughter",
+    "category": "People",
+    "description": "A female child in your family.",
+    "aliases": [
+      "girl",
+      "my daughter"
+    ],
+    "clues": [
+      "family",
+      "child",
+      "my girl",
+      "her mother",
+      "grown up",
+      "loves drawing"
+    ]
+  },
+  {
+    "id": "son",
+    "label": "Son",
+    "category": "People",
+    "description": "A male child in your family.",
+    "aliases": [
+      "boy",
+      "my son"
+    ],
+    "clues": [
+      "family",
+      "child",
+      "my boy",
+      "his mother",
+      "grown up"
+    ]
+  },
+  {
+    "id": "grandchild",
+    "label": "Grandchild",
+    "category": "People",
+    "description": "The child of your son or daughter.",
+    "aliases": [
+      "granddaughter",
+      "grandson"
+    ],
+    "clues": [
+      "family",
+      "my child's child",
+      "little one",
+      "grandparent",
+      "drawing"
+    ]
+  },
+  {
+    "id": "friend",
+    "label": "Friend",
+    "category": "People",
+    "description": "Someone you like and enjoy spending time with.",
+    "aliases": [
+      "pal",
+      "best friend"
+    ],
+    "clues": [
+      "someone I know",
+      "spend time together",
+      "care about",
+      "visit",
+      "talk"
+    ]
+  },
+  {
+    "id": "doctor",
+    "label": "Doctor",
+    "category": "People",
+    "description": "A health professional who examines and treats people.",
+    "aliases": [
+      "physician",
+      "nurse",
+      "caregiver"
+    ],
+    "clues": [
+      "health",
+      "sick",
+      "appointment",
+      "clinic",
+      "help me feel better",
+      "medical"
+    ]
+  },
+  {
+    "id": "home",
+    "label": "Home",
+    "category": "Places",
+    "description": "The place where you live and feel at home.",
+    "aliases": [
+      "house",
+      "my house"
+    ],
+    "clues": [
+      "where I live",
+      "family",
+      "bedroom",
+      "return",
+      "front door",
+      "comfortable"
+    ]
+  },
+  {
+    "id": "bathroom",
+    "label": "Bathroom",
+    "category": "Places",
+    "description": "A room with a toilet and sink.",
+    "aliases": [
+      "restroom",
+      "toilet",
+      "washroom"
+    ],
+    "clues": [
+      "toilet",
+      "sink",
+      "wash my hands",
+      "need to go",
+      "bath",
+      "restroom"
+    ]
+  },
+  {
+    "id": "hospital",
+    "label": "Hospital",
+    "category": "Places",
+    "description": "A place where people go for medical care.",
+    "aliases": [
+      "emergency room"
+    ],
+    "clues": [
+      "doctor",
+      "nurse",
+      "sick",
+      "care",
+      "ambulance",
+      "medical"
+    ]
+  },
+  {
+    "id": "grocery-store",
+    "label": "Grocery store",
+    "category": "Places",
+    "description": "A shop where you buy food and things for the home.",
+    "aliases": [
+      "supermarket",
+      "shop",
+      "store"
+    ],
+    "clues": [
+      "buy food",
+      "shopping",
+      "cart",
+      "groceries",
+      "checkout",
+      "bread"
+    ]
+  },
+  {
+    "id": "restaurant",
+    "label": "Restaurant",
+    "category": "Places",
+    "description": "A place where you can sit down and order a meal.",
+    "aliases": [
+      "cafe",
+      "diner"
+    ],
+    "clues": [
+      "eat out",
+      "menu",
+      "waiter",
+      "order food",
+      "table",
+      "meal"
+    ]
+  },
+  {
+    "id": "hungry",
+    "label": "Hungry",
+    "category": "Feelings & needs",
+    "description": "A feeling that tells you it is time to eat.",
+    "aliases": [
+      "I am hungry"
+    ],
+    "clues": [
+      "need food",
+      "stomach",
+      "meal",
+      "eat",
+      "empty"
+    ]
+  },
+  {
+    "id": "thirsty",
+    "label": "Thirsty",
+    "category": "Feelings & needs",
+    "description": "A feeling that tells you that you need a drink.",
+    "aliases": [
+      "I am thirsty"
+    ],
+    "clues": [
+      "need a drink",
+      "dry mouth",
+      "water",
+      "drink",
+      "parched"
+    ]
+  },
+  {
+    "id": "tired",
+    "label": "Tired",
+    "category": "Feelings & needs",
+    "description": "Feeling that you need rest or sleep.",
+    "aliases": [
+      "sleepy",
+      "exhausted"
+    ],
+    "clues": [
+      "need sleep",
+      "low energy",
+      "rest",
+      "long day",
+      "yawn"
+    ]
+  },
+  {
+    "id": "happy",
+    "label": "Happy",
+    "category": "Feelings & needs",
+    "description": "Feeling pleased, glad, or content.",
+    "aliases": [
+      "glad",
+      "joyful"
+    ],
+    "clues": [
+      "good",
+      "smile",
+      "pleased",
+      "wonderful",
+      "laugh"
+    ]
+  },
+  {
+    "id": "sad",
+    "label": "Sad",
+    "category": "Feelings & needs",
+    "description": "Feeling unhappy or like you might want comfort.",
+    "aliases": [
+      "upset",
+      "unhappy"
+    ],
+    "clues": [
+      "cry",
+      "unhappy",
+      "blue",
+      "lonely",
+      "tears"
+    ]
+  },
+  {
+    "id": "pain",
+    "label": "Pain",
+    "category": "Feelings & needs",
+    "description": "An uncomfortable feeling in your body.",
+    "aliases": [
+      "hurt",
+      "ache"
+    ],
+    "clues": [
+      "body",
+      "uncomfortable",
+      "head",
+      "arm",
+      "stomach",
+      "sore"
+    ]
+  },
+  {
+    "id": "cold",
+    "label": "Cold",
+    "category": "Feelings & needs",
+    "description": "A feeling when your body needs more warmth.",
+    "aliases": [
+      "chilly"
+    ],
+    "clues": [
+      "temperature",
+      "shiver",
+      "warm",
+      "jacket",
+      "freezing"
+    ]
+  },
+  {
+    "id": "hot",
+    "label": "Hot",
+    "category": "Feelings & needs",
+    "description": "A feeling when your body is too warm.",
+    "aliases": [
+      "warm",
+      "too warm"
+    ],
+    "clues": [
+      "temperature",
+      "sweating",
+      "fan",
+      "cool down",
+      "sun"
+    ]
+  },
+  {
+    "id": "help",
+    "label": "Help",
+    "category": "Feelings & needs",
+    "description": "Letting someone know you would like support.",
+    "aliases": [
+      "please help me"
+    ],
+    "clues": [
+      "support",
+      "assist",
+      "need someone",
+      "please",
+      "trouble"
+    ]
+  },
+  {
+    "id": "yes",
+    "label": "Yes",
+    "category": "Feelings & needs",
+    "description": "A word to agree or say that something is right.",
+    "aliases": [
+      "okay",
+      "sure"
+    ],
+    "clues": [
+      "agree",
+      "right",
+      "I want that",
+      "affirmative",
+      "correct"
+    ]
+  },
+  {
+    "id": "no",
+    "label": "No",
+    "category": "Feelings & needs",
+    "description": "A word to disagree or say that you do not want something.",
+    "aliases": [
+      "not",
+      "I don't want that"
+    ],
+    "clues": [
+      "disagree",
+      "don't want",
+      "stop",
+      "wrong",
+      "refuse"
+    ]
+  }
+]
